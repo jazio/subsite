@@ -11,23 +11,10 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/core": "^9.3",
         "drupal/core-composer-scaffold": "^9.3",
-        "drush/drush": "^11.0",
-        "webflo/drupal-finder": "^1.0",
-        "openeuropa/oe_dashboard_agent": "~0.3",
-        "drupal/dropsolid_purge": "^1.0@beta",
-        "webmozart/path-util": "^2.3.0",
-        "drupal/redirect": "^1.7"
+        "drush/drush": "^11.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.3",
-        "drupal/drupal-driver": "2.1.1",
-        "drupal/drupal-extension": "~4.0",
         "ec-europa/toolkit": "^8.5"
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "Subsite\\composer\\SetupWizard::setup"
-        ]
     },
     "repositories": [{
             "type": "composer",
@@ -86,11 +73,6 @@
                 "type:drupal-custom-theme"
             ]
         }
-    },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/SetupWizard.php"
-        ]
     },
     "autoload-dev": {
         "psr-4": {
