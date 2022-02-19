@@ -4,7 +4,7 @@ services:
     image: registry.fpfis.eu/fpfis/httpd-php:8.1-dev
     working_dir: ${PWD}
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
       - ${PWD}:${PWD} # Non Mac users.
       # - nfsmount:${PWD} # Mac Users with the nfsmount volume.
