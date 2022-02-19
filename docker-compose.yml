@@ -4,7 +4,7 @@ services:
     image: registry.fpfis.eu/fpfis/httpd-php:8.1-dev
     working_dir: ${PWD}
     ports:
-      - 8080
+      - "8080:80"
     volumes:
       - ${PWD}:${PWD} # Non Mac users.
       # - nfsmount:${PWD} # Mac Users with the nfsmount volume.
@@ -51,8 +51,15 @@ services:
 
   varnish:
     image: registry.fpfis.eu/fpfis/varnish/docker:65-dev
+    volumes:
+      - "./resources/default.vcl:/etc/varnish/default.vcl"
+    tmpfs:
+      - /var/lib/varnish:exec
     environment:
-    - VARNISH_DEVOPS_EXTERNAL_IPS=172.0.0.0/8
+      - VARNISH_SIZE=2G
+    command: "-p default_keep=300"
+    depends_on:
+      - "web"
 
 volumes:
   mysql:
