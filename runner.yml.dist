@@ -21,10 +21,9 @@ drupal:
         // When on a development environment we allow any trusted_host_pattern. When not
         // on a development environment we assume we only require the acceptance and
         // production domains.
-        $settings['trusted_host_patterns'] = file_exists('../resources/settings.devel.php') ? ['.*'] :
+        $settings['trusted_host_patterns'] = getenv('ENV') == 'development' ? ['.*'] :
         [
-            '^webgate\.ec\.europa\.eu$',
-            '^webgate\.acceptance\.ec\.europa\.eu$',
+            explode(',', getenv('VIRTUAL_HOSTS'))
         ];
 
         // Override site email.
