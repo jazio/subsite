@@ -21,10 +21,7 @@ drupal:
         // When on a development environment we allow any trusted_host_pattern. When not
         // on a development environment we assume we only require the acceptance and
         // production domains.
-        $settings['trusted_host_patterns'] = getenv('ENV') == 'development' ? ['.*'] :
-        [
-            explode(',', getenv('VIRTUAL_HOSTS'))
-        ];
+        $settings['trusted_host_patterns'] = getenv('ENV') == 'development' ? ['.*'] : explode(',', getenv('VIRTUAL_HOSTS'));
 
         // Override site email.
         $config['system.site']['mail'] = getenv('SMTP_FROM');
